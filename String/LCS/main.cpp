@@ -1,15 +1,34 @@
 #include <iostream>
-#include <cstdlib>
-#include <cstring>
-#include <string>
-#include <vector>
+#include <cstdio>
 #include <cmath>
+#include <string>
+#include <cstring>
+#include <vector>
 
 using namespace std;
+int sum[10][10];
+int lcs(string a,string b,int m,int n){
+	int result = 0;
+	if(sum[m][n]) return sum[m][n];
+	else{
+		if(n==0 or m==0) return 0;
+		else if(a[m-1] == b[n-1])
+			result =  1+lcs(a,b,m-1,n-1);
+		else if(a[m-1] != b[n-1]){
+			int tmp_1 = lcs(a,b,m-1,n);
+			int tmp_2 = lcs(a,b,m,n-1);
+			result = (tmp_1>tmp_1) ? tmp_1:tmp_2;
+			sum[m][n] = result;	
+		}
+	}
+	return result;
+}
 
 int main(){
-	
-	cout << "This is out math" << endl;
-	
+
+	string a,b;
+	a = "ABCDCBA";
+	b = "DCBAAABC";
+	cout << lcs(a,b,a.size(),b.size()) << endl;
 	return 0;
 }

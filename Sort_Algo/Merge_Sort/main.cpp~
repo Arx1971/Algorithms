@@ -42,7 +42,6 @@ void merge_sort(int a[],int leftstart,int rightend){
 	if(rightend<=leftstart) return;
 	
 	int middle = (leftstart+rightend)/2;
-	
 	merge_sort(a,leftstart, middle);
 	merge_sort(a,middle+1, rightend);
 	merge(a,leftstart,middle,rightend);
@@ -50,8 +49,8 @@ void merge_sort(int a[],int leftstart,int rightend){
 
 int main(){
 	
-	freopen("input.txt", "r",stdin);
-	
+	//freopen("input.txt", "r",stdin);
+	freopen("output.txt","w",stdout);
 	int a[10000];
 	
 	int n,tc;
